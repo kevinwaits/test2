@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul class="list-group">
+
+        </ul>
+
+    <button class="dd">dddd</button>
+</body>
+
+<script src="__S__/js/js.js"></script>
+<script src="__S__/js/cookie.js"></script>
+<script>
+
+        $(".dd").click(function () {
+
+
+            $.cookie("xxx", 9889, {
+                expires:7, path: '/'
+            });
+
+            console.log(1111111111111);
+            console.log($.cookie('xxx'));
+
+            });
+
+    console.log($.cookie('my_coo'))
+</script>
+
+</html>

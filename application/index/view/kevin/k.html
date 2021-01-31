@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="__S__/layui/css/layui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<form id="d_form">
+
+<textarea id="demo" name="myname" style="display: none;"></textarea>
+</form>
+
+<div class="tijiao">提交</div>
+
+</body>
+
+<script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="__S__/layui/layui.js"></script>
+
+<script>
+    layui.use('layedit', function(){
+        var layedit = layui.layedit;
+        layedit.build('demo'); //建立编辑器
+    });
+        //
+        // $(".tijiao").click(function () {
+        //         // alert(1111);
+        //         d_ajax();
+        //     });
+
+
+    form.on('submit(fromsumbit)', function(data) {
+        console.log(data.field);
+        alert("111")
+        $.ajax({
+            url:'${pageContext.request.contextPath}/addnotice.action',
+            method:'post',
+            data:data.field,
+            dataType:'JSON',
+            success:function(res){
+                alert("公告添加成功");
+            },
+            error:function (data) {
+                alert("公告添加失败");
+            }
+        }) ;
+    })
+
+        // function d_ajax() {
+        // //             alert("d_ajax_button");      //首先测试 d_ajax是否能启动
+        //              alert($("#d_form").serialize());    //再次测试 d_ajax 里的 表单的序列化是否能正确
+        // //         $.post("{:url('mokuai/Controller/function')}", $("#d_form").serialize(), function (from_return)
+        // //         {
+        // //             if (from_return.a == "yes") {
+        // //                 alert("保存成功");
+        // //                 // window.location.reload();
+        // //             }
+        // //         });
+        //     }
+
+
+</script>
+
+</html>

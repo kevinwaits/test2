@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>复选框美化下载</title>
+    <link rel="stylesheet" href="__S__/richui/css/jquery.richUI.min.css" />
+    <script src="__S__/js/js.js"></script>
+    <script type="text/javascript" src="__S__/richui/js/jquery.richUI.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            //单选
+            /*
+            * selected: 默认选中值
+            * type: 0 或者 1 两种样式
+            */
+            $("input[name='sex']").richradio();
+            $("input[name='sex2']").richradio();
+            $("input[name='sex3']").richradio({selected:"女"});
+            $("input[name='sex4']").richradio({selected:"未知", type:"1"});
+
+            //复选
+            /*
+            * allBtn:是否出现全选按钮,默认 false
+            * checkAll: 全选，默认false
+            * selected: 默认选中值
+            * type: 0 或者 1 两种样式
+            */
+            $("input[name='xingqu']").richcheckbox();
+            $("input[name='xingqu2.aa']").richcheckbox({allBtn:true, checkAll:true});
+            $("input[name='xingqu3']").richcheckbox({allBtn:true});
+            $("input[name='xingqu4']").richcheckbox({allBtn:true, selected:"2,4", type: 1});
+
+            //下拉框
+            /**
+             * type: single(单选，默认)，multi(多选)
+             * selected： 默认选中值
+             * width： 宽度
+             *
+             **/
+            $("#mySelect").richselect();
+            $("#mySelect2").richselect({selected:"搜狐"});
+            $("#mySelect3").richselect({type:"multi", placeholder:"hello"});
+            $("#mySelect4").richselect({type:"multi", selected:"百度,阿里巴巴", width:"300px"});
+
+        });
+
+        function getRadioValue(_name){
+            alert($("input[name='"+_name+"']").getRadioVal());
+        }
+
+        function getCheckboxValue(_name){
+            alert($("input[name='"+_name+"']").getCheckboxVal());
+        }
+
+        function getSelectValue(_id){
+            alert($("#"+_id).getSelectVal());
+        }
+    </script>
+</head>
+<body>
+<h1>rich美化</h1>
+<form id="form1" action="" method="POST">
+    <div style="width: 100%;">
+        <span>单选（默认样式）：</span>
+        <input name="sex" value="男" type="radio" lab="男" />
+        <input name="sex" value="女" type="radio" lab="女" />
+        <input type="button" value="获取选择值" onclick="getRadioValue('sex')" />
+        <br />
+        <br />
+        <span>单选（原始方式，默认选中女）：</span>
+        <input name="sex2" value="男" type="radio" lab="男" />
+        <input name="sex2" value="女" type="radio" lab="女" />
+        <input name="sex2" value="未知" type="radio" checked="checked" lab="未知" />
+        <input type="button" value="获取选择值" onclick="getRadioValue('sex2')" />
+        <br />
+        <br />
+        <span>单选（传值方式，默认选中女）：</span>
+        <input name="sex3" value="男" type="radio" lab="男" />
+        <input name="sex3" value="女" type="radio" lab="女" />
+        <input name="sex3" value="未知" type="radio" lab="未知" />
+        <input type="button" value="获取选择值" onclick="getRadioValue('sex3')" />
+        <br />
+        <br />
+        <span>单选（样式2，默认选中未知）：</span>
+        <input name="sex4" value="男" type="radio" lab="男" />
+        <input name="sex4" value="女" type="radio" lab="女" />
+        <input name="sex4" value="未知" type="radio" lab="未知" />
+        <input type="button" value="获取选择值" onclick="getRadioValue('sex4')" />
+    </div>
+
+    <div style="width: 100%;">
+        <br />
+        <span>复选（普通）：</span>
+        <input name="xingqu" value="旅行" type="checkbox" lab="旅行" >
+        <input name="xingqu" value="与周公下棋" type="checkbox" lab="与周公下棋" />
+        <input name="xingqu" value="读书" type="checkbox" lab="读书" />
+        <input type="button" value="获取选择值" onclick="getCheckboxValue('xingqu')" />
+        <br />
+        <br />
+        <span>复选（带全选按钮）：</span>
+        <input name="xingqu2.aa" value="旅行" type="checkbox" lab="旅行" >
+        <input name="xingqu2.aa" value="与周公下棋" type="checkbox" lab="与周公下棋" />
+        <input name="xingqu2.aa" value="读书" type="checkbox" lab="读书" />
+        <input name="xingqu2.aa" value="逛街" type="checkbox" lab="逛街" />
+        <input type="button" value="获取选择值" onclick="getCheckboxValue('xingqu2.aa')" />
+        <br />
+        <br />
+        <span>复选（默认选中1）：</span>
+        <input name="xingqu3" value="旅行" type="checkbox" lab="旅行" >
+        <input name="xingqu3" value="与周公下棋" type="checkbox" checked="checked" lab="与周公下棋" />
+        <input name="xingqu3" value="读书" type="checkbox" checked="checked" lab="读书" />
+        <input name="xingqu3" value="逛街" type="checkbox" checked="checked" lab="逛街" />
+        <input type="button" value="获取选择值" onclick="getCheckboxValue('xingqu3')" />
+        <br />
+        <br />
+        <span>复选（默认选中2）：</span>
+        <input name="xingqu4" value="旅行" type="checkbox" lab="旅行" >
+        <input name="xingqu4" value="与周公下棋" type="checkbox" lab="与周公下棋" />
+        <input name="xingqu4" value="读书" type="checkbox" lab="读书" />
+        <input name="xingqu4" value="逛街" type="checkbox" lab="逛街" />
+        <input type="button" value="获取选择值" onclick="getCheckboxValue('xingqu4')" />
+    </div>
+
+    <div style="width: 100%;height: 100px;">
+        <br />
+        <span>下拉框（普通）：</span>
+        <select id="mySelect" name="company">
+            <option value="" >请选择</option>
+            <option value="百度" >百度</option>
+            <option value="新浪">新浪</option>
+            <option value="搜狐">搜狐</option>
+            <option value="腾讯">腾讯</option>
+            <option value="阿里巴巴">阿里巴巴</option>
+        </select>
+        <input type="button" value="获取选择值" onclick="getSelectValue('mySelect')" />
+        <br />
+        <br />
+        <span>下拉框（普通默认选中）：</span>
+        <select id="mySelect2" name="company2">
+            <option value="" >请选择</option>
+            <option value="百度" >百度</option>
+            <option value="新浪">新浪</option>
+            <option value="搜狐">搜狐</option>
+            <option value="腾讯">腾讯</option>
+            <option value="阿里巴巴">阿里巴巴</option>
+        </select>
+        <input type="button" value="获取选择值" onclick="getSelectValue('mySelect2')" />
+        <br />
+        <br />
+        <span>下拉框（多选）：</span>
+        <select id="mySelect3" name="company3">
+            <option value="" >请选择</option>
+            <option value="百度" >百度</option>
+            <option value="新浪">新浪</option>
+            <option value="搜狐">搜狐</option>
+            <option value="腾讯">腾讯</option>
+            <option value="阿里巴巴">阿里巴巴</option>
+        </select>
+        <input type="button" value="获取选择值" onclick="getSelectValue('mySelect3')" />
+        <br />
+        <br />
+        <span>下拉框（多选默认选中）：</span>
+        <select id="mySelect4" name="company4">
+            <option value="" >请选择</option>
+            <option value="百度" >百度</option>
+            <option value="新浪">新浪</option>
+            <option value="搜狐">搜狐</option>
+            <option value="腾讯">腾讯</option>
+            <option value="阿里巴巴">阿里巴巴</option>
+        </select>
+        <input type="button" value="获取选择值" onclick="getSelectValue('mySelect4')" />
+        <br />
+        <br />
+    </div>
+</form>
+</body>
+</html>

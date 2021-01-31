@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Simple Switch,Switch,Simple,开关插件,开关,javascript,Switch jquery">
+    <meta name="description" content="Simple Switch is Switch jQuery plug-in , Author is Lukang">
+    <link rel="icon" href="favicon.ico">
+    <title>Simple Switch - lukang</title>
+    <script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="__S__/myswitch/js/simple.switch.js"></script>
+    <link rel="stylesheet" href="__S__/myswitch/css/simple.switch.three.css" type="text/css">
+    <link rel="stylesheet" href="__S__/myswitch/css/css.css" type="text/css">
+    <link rel="stylesheet" href="__S__/myswitch/FontAwesome/css/font-awesome.min.css" type="text/css">
+</head>
+
+<style>
+    .Switch{height: 30px;width: 90px;line-height: 12px}
+    .SwitchButton{height: 35px!important;width: 35px!important;}
+    .SwitchLine:after {position: absolute;left: 5px!important;}
+</style>
+
+<body>
+
+<div class="">
+    <form role="form"  name="myform" method="post" id="d_form">
+
+                <div class="get_data">{$link.switch_1}</div>
+
+                    <div class="div" style="margin-left: 20px">
+                        <input type="checkbox" class="c5 switch_1" name="switch_1"
+                               value="a" >
+                    </div>
+
+        <div type="" class="save">提交按钮Button</div>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    $(".c5").simpleSwitch({
+        "theme": "FlatCircular"
+    });
+
+
+
+
+    if($(".get_data").html()==1){
+        $(".switch_1").click();
+    }
+
+        $(".save").click(function () {
+                d_ajax();
+            });
+
+            function d_ajax() {
+            //             alert("d_ajax_button");      //首先测试 d_ajax是否能启动
+                         alert($("#d_form").serialize());    //再次测试 d_ajax 里的 表单的序列化是否能正确
+            //         $.post("{:url('mokuai/Controller/function')}", $("#d_form").serialize(), function (from_return)
+            //         {
+            //             if (from_return.a == "yes") {
+            //                 alert("保存成功");
+            //                 // window.location.reload();
+            //             }
+            //         });
+                }
+
+</script>
+
+
+
+<div class="lk m5">
+    <div class="main">
+        Author is <a href="http://lukangkang.cc/" style="color:#000;" target="_blank">Lukang</a> . <i class="fa fa-heart" style="color: #d43f57;"></i> . 最后更新于2016年7月19日
+    </div>
+</div>
+
+
+
+</body>
+</html>

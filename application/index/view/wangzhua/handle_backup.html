@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style></style>
+
+<body>
+
+        <form id="d_form">
+            <ul class="list-group">
+                {volist name = "link" id ="one"}
+                <div class="{$one.myclass}_div">
+                    <input type="checkbox" class="mycheckbox" data-checkbox="{$one.myclass}"  checked>
+                    <div class="btn" onclick="" id="{$one.myclass}">拆分</div>
+                    <div class="btn_del" onclick="btn_del(this)"  data-del="{$one.myclass}">删除</div>
+                    <textarea type="text"  cols="200" class="mytextarea {$one.myclass}"
+                              data-textarea="{$one.myclass}"
+                              name="{$one.myclass}_name">{$one.str}
+                    </textarea>
+                </div>
+                {/volist}
+            </ul>
+        </form>
+
+        <button class="make_art">立即生成</button>
+
+        <div>
+            <div id="preview_div"></div>
+        </div>
+
+</body>
+
+<script src="__S__/js/js.js"></script>
+<script src="__S__/js/cookie.js"></script>
+
+<script>
+            $(".mytextarea").each(function(){
+                $(this).attr("rows",$(this).val().length/60)
+            });
+
+            $(".btn").click(function () {
+                var x = $(this).attr("id")
+                str_for_split = $("."+x).val();
+                str_for_split =str_for_split.substring(0, str_for_split.length - 1);
+
+                arr = str_for_split.split("。");
+                // arr = str_for_split.split(".");
+                
+                arr = arr.reverse()
+                console.log(arr);
+                for(i=0;i<arr.length;i++){
+                    $("."+x+"_div").after('<div class="'+x+'_split_div">'+
+                        '<input type="checkbox" class="mycheckbox" data-checkbox="'+x+'_split"  checked>' +
+                        '<div class="btn_del" onclick="btn_del(this)"  data-del="'+x+'_split">删除</div>'+
+                        '<textarea type=\"text\"  cols=\"200\" class=\"mytextarea \" data-textarea="'+x+'_split" name="'+x+'_name_split">'+arr[i]+'</textarea><br>'+
+                        '</div>'
+                    );}
+                $("."+x+"_div").remove()
+            });
+
+            $(".make_art").click(function () {
+                // 循环处理,去掉没有选中的name属性
+                // $(".mycheckbox").each(function(){
+                //     if(!$(this).is(':checked')){
+                //         // alert($(this).attr("data-checkbox"))
+                //         // alert($("[data-textarea="+$(this).attr("data-checkbox")+"]").val())
+                //         $("[data-textarea="+$(this).attr("data-checkbox")+"]").removeAttr("name")
+                //     }
+                // });
+                // 循环处理,去掉没有选中的name属性
+
+                // $.cookie('co_myarr', null);
+
+                preview_arr=[]
+                $(".preview_item").remove()
+
+                var preview_arr= new Array()
+                $(".mytextarea").each(function(){
+                    preview_arr.push($(this).val())
+                });
+
+                console.log(preview_arr)
+                    for(i=0;i<preview_arr.length;i++){
+                        $("#preview_div").after('</p class="preview_item">'+preview_arr[i]+'</p><br>');
+                    }
+            });
+
+            function btn_del(x){
+                console.log(x)
+                console.log($(x).attr("class"))
+                $("."+$(x).attr("data-del")+"_div").remove()
+
+            };
+
+
+
+
+
+</script>
+
+</html>

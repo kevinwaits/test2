@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div class="d-flex j-between a-center" style="width: 100%;margin: 0 auto;border: 1px solid #e9e9e9">
+    <select class="my_select" >
+        <option class="first_select_flag" value="v111">1111</option>
+        <option class="first_select_flag" value="v2">2222</option>
+        <option class="first_select_flag" value="v33">3333</option>
+        <option class="first_select_flag" value="v444">4444</option>
+        <option class="first_select_flag" value="v5555">555</option>
+    </select>
+    <div class="first_paragraph_show first_content_text span24-20 px-1"></div>
+</div>
+
+</body>
+
+
+
+<script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+    var q =""
+        $('.my_select').change(function() {
+            var p = this.selectedIndex;
+            q = $('option').eq(p).val();
+            alert(q)
+        })
+    // 现在这个q的值就是你要的，你可以把它放到ajax传递过去了
+</script>
+</html>

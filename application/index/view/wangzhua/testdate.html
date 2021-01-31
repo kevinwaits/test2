@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dateTimePicker</title>
+    <link type="text/css" rel="stylesheet" href="__S__/date/demo.css">
+    <style type="text/css">
+        .mt10px{
+            margin-top: 10px;
+        }
+        .mt20px{
+            margin-top: 20px;
+        }
+        .input{
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            padding: 6px 4px;
+        }
+        p{
+            line-height: 25px;
+        }
+    </style>
+
+
+    <script type="text/javascript" src="__S__/date/jquery.js"></script>
+    <script type="text/javascript" src="__S__/date/datetimepicker.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="demo-div mt20px">
+        <input type="text" class="mt10px input" id="J-demo-02">
+
+        <script type="text/javascript">
+            $('#J-demo-02').dateTimePicker({
+                mode: 'dateTime'
+            });
+        </script>
+    </div>
+
+</div>
+</body>
+</html>

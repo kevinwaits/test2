@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="__S__/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="__S__/css/kevin_main.css" rel="stylesheet" />
+</head>
+
+<style>
+    body {
+        font: 14px/150% microsoft yahei,tahoma;
+    }
+    .clear {
+        clear: both
+    }
+    .RadioStyle input {
+        display: none
+    }
+    .RadioStyle label {
+        border: 1px solid #CCC;
+        color: #666;
+        padding: 2px 10px 2px 5px;
+        line-height: 28px;
+        min-width: 80px;
+        text-align: center;
+        float: left;
+        margin: 2px;
+        border-radius: 4px
+    }
+    .RadioStyle input:checked + label {
+        background: url("/static/image/ico_checkon.svg") no-repeat right bottom;
+        border: 1px solid #00a4ff;
+        background-size: 21px 21px;
+        color: #00a4ff
+    }
+    .RadioStyle input:disabled + label {
+        opacity: 0.7;
+    }
+    .height_0{opacity: 0}
+    label{cursor: pointer}
+</style>
+
+<body class="item_box">
+
+    <div class="model "></div>
+
+    <div class=" d-flex a-center flex-row j-between x box_one height_0" style="margin-bottom: 10px">
+        <div class="RadioStyle   " style="width: 100%">
+            <div class="Block PaddingL d-flex flex-row j-center  a-center" style="width: 100%">
+                <input type="checkbox" id="" class="mycheckbox " checked/>
+                <label for="" style="height: 40px" >使用</label>
+                <button class="btn btn-dark mx-2" onclick="" id="" disabled style="height: 40px;width: 70px">拆分</button>
+                <textarea type="text"  cols="200" class="mytextarea " name=""></textarea>
+            </div>
+        </div>
+    </div>
+
+{volist name = "link" id ="one"}
+<div class="{$one.myclass}_div d-flex a-center flex-row j-between box_one " style="margin-bottom: 10px">
+    <div class="RadioStyle" style="width: 100%">
+        <div class="Block PaddingL d-flex flex-row j-center a-center" style="width: 100%">
+            <input type="checkbox" id="{$one.myclass}_for_label" class="mycheckbox "
+                   data-checkbox="{$one.myclass}" checked/>
+            <label for="{$one.myclass}_for_label" style="height: 40px">使用</label>
+            <button class="btn btn-danger mx-2" onclick="split_btn(this)" id="{$one.myclass}"
+                    style="height: 40px;width: 70px">拆分</button>
+            <textarea type="text"  cols="200" class="mytextarea {$one.myclass}"
+                      name="{$one.myclass}_name">{$one.str}
+            </textarea>
+        </div>
+    </div>
+</div>
+{/volist}
+
+        <!-- 按钮触发模态框 -->
+        <button class=" btn-primary btn-lg make_art col-lg-6 offset-3"
+                data-toggle="modal" data-target="#myModal">
+            生成随机文章
+        </button>
+        <!-- 按钮触发模态框 -->
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h3 class="modal-title make_art" id="myModalLabel" style="cursor: pointer">
+                            点击再次排序
+                        </h3>
+                        <input type="text" placeholder="请输入文章标题" class="modal-title">
+                        <button type="button" class="close close-lg" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="preview_div"></div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            提交更改
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+    <!--<div class="insert_flag">in_flag</div>-->
+
+</body>
+
+<script src="__S__/js/js.js"></script>
+<script src="__S__/bootstrap/js/bootstrap.js"></script>
+<script src="__S__/js/cookie.js"></script>
+
+<script>
+
+    console.log(Date.now());    //1548315375376
+
+    $(".mytextarea").each(function(){
+        $(this).attr("rows",$(this).val().length/60)
+    });
+
+    function split_btn(x){
+        console.log($(x).next().val())
+        arr = $(x).next().val().split(".");
+        arr = arr.filter(s => $.trim(s).length > 0);
+        arr = arr.reverse()
+        console.log(arr)
+        time_now = Date.now()
+        for(i=0;i<arr.length;i++){
+            $(".model").next().find("textarea").val(arr[i])
+            $(".model").next().find("input").attr("id",time_now)
+            $(".model").next().find("label").attr("for",time_now)
+            $(".model").next().find("textarea").attr("class",time_now)
+            $(".model").next().removeClass("height_0")
+
+            // $(".model").next().clone().insertAfter($(".insert_flag"))
+            $(x).parents(".box_one").after($(".model").next().clone())
+            $(".model").next().find("input").attr("id","")
+            $(".model").next().find("label").attr("for","")
+            $(".model").next().find("textarea").val("")
+            $(".model").next().addClass("height_0")
+
+            time_now+=1
+        }
+        $(x).parents(".box_one").remove()
+    }
+
+    $(".make_art").click(function () {
+
+        var xx=1;
+        $(".PaddingL").each(function(){
+            if($(this).children("input").attr("id")==""){
+                $(this).children("input").attr("id",xx);
+                $(this).children("label").attr("for",xx);
+                $(this).children("textarea").addClass(xx);
+                xx+=1;
+            }
+            // alert($(this).children("input").attr("id"));
+        });
+
+        $(".preview_item").remove()
+
+        var preview_arr= new Array()
+        preview_arr=[]
+
+        // 循环处理,push进去
+        $(".mycheckbox").each(function(){
+            if($(this).is(':checked')){
+                preview_arr.push($(this).nextAll("textarea").val())
+            }
+        });
+        // 循环处理,push进去
+
+        console.log(preview_arr)
+
+        preview_arr.sort(function(){return Math.random()>0.5?-1:1;});
+
+        for(i=0;i<preview_arr.length;i++){
+            $("#preview_div").after('<div class="preview_item">'+preview_arr[i]+'</div>');
+        }
+
+    });
+
+
+</script>
+
+</html>

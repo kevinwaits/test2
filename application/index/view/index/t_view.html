@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .red{background-color: red}
+</style>
+
+<body>
+
+
+    <ul class="list-group">
+        {volist name = "link" id ="one"}
+            <li class="list-group-item active">工资明细-{$one.name|default="名称为空"}</li>
+            {eq name="$one.name" value="1"}"卧槽"{/eq}
+            <li class="list-group-item  <?php if($one['name']!=1) echo 'red';?> ">姓名:{$one.age?'a':'b'}</li>
+            <li class="list-group-item active">实发工资:{$one.name!=1?$one.pass :'ssss'}</li>
+        <?php
+            if($one['name']!=1)
+            echo "php".$one['name'];
+        ?>
+        <hr>
+        {/volist}
+
+
+    </ul>
+
+<br>
+    {$Think.server.script_name} <br>
+    {$Think.session.user_id}<br>
+    {$Think.get.pageNumber} <br>
+    {$Think.cookie.name}  <br>{$Request.get.id}
+
+
+
+</body>
+</html>

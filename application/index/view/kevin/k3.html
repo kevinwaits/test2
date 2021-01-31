@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="a">{$link}</div>
+
+    <img src="__S__/image/1.png" alt="xxx" class="myimg">
+    <img src="__S__/image/2.png" alt="xxx" class="myimg">
+    <img src="__S__/image/3.png" alt="xxx" class="myimg">
+    <img src="__S__/image/4.png" alt="xxx" class="myimg">
+        <br>
+    <img src="__S__/image/1.png"  class="myimg">
+    <img src="__S__/image/2.png" alt="xxx" class="myimg">
+    <img src="__S__/image/3.png" alt="xxx" class="myimg">
+    <img src="__S__/image/4.png"  class="myimg">
+</body>
+
+<script>
+     var mystr = $(".a").html()
+    mystr = mystr.replace(/[\uff0c]/g,",");
+     arr = mystr.split(",");
+     console.log(arr);
+
+     var rand1 = Math.floor( Math.random() * arr.length );
+     var rand2 = Math.floor( Math.random() * arr.length );
+
+     var getstr1 = arr[rand1];
+     var getstr2 = arr[rand2];
+
+     $(".myimg").each(function(){
+         var rand1 = Math.floor( Math.random() * arr.length );
+         var rand2 = Math.floor( Math.random() * arr.length );
+
+         var getstr1 = arr[rand1];
+         var getstr2 = arr[rand2];
+
+         console.log(getstr1);
+         console.log(getstr2);
+
+         $(this).attr("alt", getstr1+" "+getstr2);
+     });
+
+</script>
+
+</html>

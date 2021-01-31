@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="__S__/layui/css/layui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+        <form action="{:url('index/kevin/k5_get')}" method="post">
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="content" type="text/plain">
+
+            </script>
+            <input type="submit" value="提交">
+        </form>
+
+        <!-- 配置文件 -->
+        <script type="text/javascript" src="__S__/ueditor_a/ueditor.config.js"></script>
+        <!-- 编辑器源码文件 -->
+        <script type="text/javascript" src="__S__/ueditor_a/ueditor.all.js"></script>
+        <!-- 实例化编辑器 -->
+        <script type="text/javascript">
+            var editor = UE.getEditor('container');
+        </script>
+
+</body>
+
+<script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="__S__/layui/layui.js"></script>
+
+<script>
+
+</script>
+
+</html>

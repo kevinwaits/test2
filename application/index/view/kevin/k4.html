@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<script src="__S__/js/js.js"></script>
+
+<div id="div1">
+    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+
+<button id="btn1">getJSON</button>
+
+<script type="text/javascript" src="__S__/js/wangEditor.js"></script>
+
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#div1')
+    editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    editor.create()
+
+
+    // $("#btn1").click(function () {
+    //     var json = editor.txt.getJSON()  // 获取 JSON 格式的内容
+    //     var jsonStr = JSON.stringify(json)
+    //     console.log(json)
+    //     console.log(jsonStr)
+    //     $.post("{:url('index/kevin/k4_get')}", $("#d_form").serialize(), function (from_return)
+    //     {
+    //         if (from_return.a == "yes") {
+    //             alert("保存成功");
+    //             // window.location.reload();
+    //         }
+    //     });
+    // });
+    document.getElementById('btn1').addEventListener('click', function () {
+        // 读取 html
+        // alert(editor.txt.html())
+        console.log(editor.txt.html())
+    }, false)
+
+
+</script>
+
+</body>
+</html>

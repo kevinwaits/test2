@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css制作空心的上下左右的箭头</title>
+    <style type="text/css">
+        .archer{
+            display: inline-block;
+            border-top: 20px solid;
+            border-right: 20px solid;
+            width: 60px;
+            height: 60px;
+            border-color: #EA6000;
+            transform: rotate(45deg);
+            margin: 10px 0 0 -50px;
+        }
+    </style>
+
+<body>
+<div class="box" style="display: flex;flex-direction: row;justify-content: start">
+
+    <div style="height:100px;width: 100px;background-color: red"></div>
+    <div class="archer"></div>
+
+</div>
+
+</body>
+</html>
